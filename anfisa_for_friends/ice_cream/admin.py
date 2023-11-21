@@ -24,7 +24,6 @@ class IceCreamAdmin(admin.ModelAdmin):
         'is_published',
         'is_on_main',
         'category',
-        'wrapper',
         'toppings_display'
     )
     list_editable = (
@@ -32,12 +31,13 @@ class IceCreamAdmin(admin.ModelAdmin):
         'is_on_main',
         'category'
     )
-    list_per_page = 5
+    list_per_page = 7
     fields = (
         'title',
         ('is_published', 'is_on_main',),
         'description',
         ('category', 'wrapper'),
+        ('price', 'output_order'),
         'toppings'
     )
     search_fields = ('title',)

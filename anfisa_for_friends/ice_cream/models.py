@@ -28,7 +28,11 @@ class Topping(PublishedModel):
 
 class IceCream(PublishedModel):
     description = models.TextField(verbose_name='описание')
-    is_on_main = models.BooleanField(default=False, verbose_name='на главной')
+    is_on_main = models.BooleanField(
+        default=False,
+        verbose_name='на главной',
+        help_text='на главную'
+    )
     category = models.ForeignKey(
         'Category',
         on_delete=models.CASCADE,
@@ -44,8 +48,19 @@ class IceCream(PublishedModel):
         related_name='ice_cream',
         verbose_name='обертка'
     )
+    output_order = models.PositiveSmallIntegerField(
+        default=100,
+        verbose_name='Порядок отображения',
+        help_text='Чем меньше цифра тем выше отображение на сайте '
+    )
+    price = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        verbose_name='цена'
+    )
 
     class Meta:
+        ordering = ('output_order', 'title')
         verbose_name = 'мороженое'
         verbose_name_plural = 'Мороженое'
 
