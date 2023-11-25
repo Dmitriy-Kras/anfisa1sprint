@@ -19,6 +19,8 @@ INSTALLED_APPS = [
     'ice_cream.apps.IceCreamConfig',
     'about.apps.AboutConfig',
     'debug_toolbar',
+    'contest.apps.ContestConfig',
+    'django_bootstrap5',
 ]
 
 MIDDLEWARE = [

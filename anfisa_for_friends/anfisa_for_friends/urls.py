@@ -6,6 +6,7 @@ urlpatterns = [
     path('', include('homepage.urls', namespace='homepage')),
     path('about/', include('about.urls', namespace='about')),
     path('ice_cream/', include('ice_cream.urls', namespace='ice_cream')),
+    path('contest/', include('contest.urls')),
     path('admin/', admin.site.urls),
 ]
 

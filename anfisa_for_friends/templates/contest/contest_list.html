@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Список заявок
+{% endblock %}
+
+{% block content %}
+  {% for claim in claims %}
+    <div> <!-- Обернём каждую запись в тег div -->
+      <div> <!-- Текст обернём в отдельный вложенный div -->
+          {{ claim.id }},
+          {{ claim.title }},
+          {{ claim.price }},
+          {{ claim.description }},
+          {% if claim.comment %}
+            {{ claim.comment }}
+          {% endif %}
+      </div>
+      <div>
+        <a href="{% url 'contest:edit' claim.id %}">Редактировать заявку</a>
+        <a href="{% url 'contest:delete' claim.id %}">Удалить заявку</a>
+      </div>
+      {% if not forloop.last %}
+        <hr>
+      {% endif %}
+    </div>
+  {% endfor %}
+{% endblock %}
